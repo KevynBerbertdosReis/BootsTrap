@@ -1,0 +1,180 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"
+        integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/Aula-20-07-24/assets/css/style.css">
+    <title>Document</title>
+</head>
+<div class="wrapper">
+    <header class="bg-warning">
+        <p class="display-5 text-center">Cadastro de produto</p>
+    </header>
+    <div class="container">
+        <p class="text-center">Sistema de gerenciamento de produtos</p>
+        <div class="action">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Cadastrar item
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h5 class="modal-title" id="exampleModalLabel">Cadastro de produto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form">
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <label for="inputProduto" class="form-label">Produto</label>
+                                        <input type="text"
+                                        class="form-control"
+                                        id="inputProduto"
+                                        placeholder="Produto"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <label for="inputMarca" class="form-label">Marca</label>
+                                        <input type="text"
+                                        class="form-control"
+                                        id="inputMarca"
+                                        placeholder="Marca"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-4">
+                                        <label for="inputEstoque" class="form-label">Estoque</label>
+                                        <input type="text"
+                                        class="form-control"
+                                        id="inputEstoque"
+                                        placeholder="Estoque"/>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="inputCusto" class="form-label">Preço Custo</label>
+                                        <input type="text"
+                                        class="form-control"
+                                        id="inputCusto"
+                                        placeholder="Preço custo"/>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="inputVendas" class="form-label">Preço Vendas</label>
+                                        <input type="text"
+                                        class="form-control"
+                                        id="inputVendas"
+                                        placeholder="Preço Vendas"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button onclick="add()" 
+                            type="button" 
+                            class="btn btn-primary">Cadastro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <table class="table table-striped">
+            <thead class="bg-warning">
+                <tr>
+                    <th>#</th>
+                    <th>Produto</th>
+                    <th>Marca</th>
+                    <th>Estoque</th>
+                    <th>Preço custo</th>
+                    <th>Preço venda</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>220</td>
+                    <td>R$ 120,00</td>
+                    <td>R$ 250,00</td>
+                    <td class="d-flex justify-content-end gap-3">
+                        <button class="btn btn-info">Ver</button>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger">Deletar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>Nicolas</td>
+                    <td>Nike</td>
+                    <td>400</td>
+                    <td>R$ 99,00</td>
+                    <td>R$ 120,00</td>
+                    <td class="d-flex justify-content-end gap-3">
+                        <button class="btn btn-info">Ver</button>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger">Deletar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Marcela</td>
+                    <td>Adidas</td>
+                    <td>150</td>
+                    <td>R$ 220,00</td>
+                    <td>R$ 240,00</td>
+                    <td class="d-flex justify-content-end gap-3">
+                        <button class="btn btn-info">Ver</button>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger">Deletar</button>
+                    </td>
+                <tr>
+                    <th>4</th>
+                    <td>Jesus</td>
+                    <td>Cristo</td>
+                    <td>220</td>
+                    <td>R$ 77,00</td>
+                    <td>R$ 90,00</td>
+                    <td class="d-flex justify-content-end gap-3">
+                        <button class="btn btn-info">Ver</button>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger">Deletar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>Ben</td>
+                    <td>Skyler</td>
+                    <td>90</td>
+                    <td>R$ 100,00</td>
+                    <td>R$ 190,00</td>
+                    <td class="d-flex justify-content-end gap-3">
+                        <button class="btn btn-info">Ver</button>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger">Deletar</button>
+                    </td>
+                </tr>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
+        integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/laco-repeticao.js"></script>
+</body>
+
+</html>
