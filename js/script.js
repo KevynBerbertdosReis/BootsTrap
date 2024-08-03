@@ -1,24 +1,52 @@
+const productListTable = document.getElementById("products-list");
+const tableBody = document.createElement("tbody");
+const tableRow = document.createElement("tr");
 
-let productsArray = [];
 
-function add() {
-    let inputProduto = document.getElementById('inputProduto').value;
-    let inputMarca = document.getElementById('inputMarca').value;
-    let inputEstoque = document.getElementById('inputEstoque').value;
-    let inputCusto = document.getElementById('inputCusto').value;
-    let inputVendas = document.getElementById('inputVendas').value;
+const tableCellId = document.createElement("td");
+tableCellId.innerText = 1;
+tableRow.appendChild(tableCellId);
 
-    const dataProduct = {
-        
-   id: Math.random(),
-        produto: inputProduto,
-        marca: inputMarca,
-        estoque: inputEstoque,
-        custo: inputCusto,
-        vendas: inputVendas,
-}
-    productsArray.push(dataProduct)
-    console.log(productsArray);
+const tableCellProduct = document.createElement("td");
+tableCellProduct.innerText = "tenis jordan air";
+tableRow.appendChild(tableCellProduct);
 
-}
+const tableCellBrand = document.createElement("td");
+tableCellBrand.innerText = "nike";
+tableRow.appendChild(tableCellBrand);
 
+const tableCellStock = document.createElement("td");
+tableCellStock.innerText = 300;
+tableRow.appendChild(tableCellStock);
+
+const tableCellPriceCost = document.createElement("td");
+tableCellPriceCost.innerText = 340.09;
+tableRow.appendChild(tableCellPriceCost);
+
+const tableCellPrice = document.createElement("td");
+tableCellPrice.innerText = 1.999;
+tableRow.appendChild(tableCellPrice);
+
+const tableButton = document.createElement("button");
+tableButton.innerText = "Ver";
+tableRow.appendChild(tableButton);
+
+const tableCellAction = document.createElement("td")
+
+const tableEditButton = document.createElement("button");
+tableEditButton.innerText = "Editar";
+tableEditButton.className = "btn btn-primary"
+
+
+
+
+
+const tableDelButton = document.createElement("button");
+tableDelButton.innerText = "Deletar";
+tableRow.appendChild(tableDelButton);
+tableCellAction.append(tableEditButton);
+tableRow.appendChild(tableCellAction);
+tableBody.appendChild(tableRow);
+productListTable.appendChild(tableBody);
+
+console.log(tableBody);
