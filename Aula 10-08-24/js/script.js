@@ -1,52 +1,97 @@
-localStorage.setItem('products', JSON.stringify(({ name: "gideao", })))
-
-function listProduct(){
-    
-}
-const colName = [
-    "product_id",
-    "product_name",
-    "product_brand",
-    "product_stock",
-    "product_price_cost",
-    "product_price",
-];
-
-const productsListTable = document.getElementById("products-list")
-
-const tableBody = document.createElement("tbody");
-
-
-const products = []
-
-const tableRow = document.createElement("tr");
-
 let id = 1;
 
+/**
+ * Itens das colunas
+ */
+const colName = [
+  "product_id",
+  "product_name",
+  "product_brand",
+  "product_stock",
+  "product_price_cost",
+  "product_price",
+];
 
-function addProduct() {
-    tableBody.innerHTML = "";
+/**
+ * Pega a table de produtos
+ *
+ * var {HTMLElement} productsListTable
+ */
+const productsListTable = document.getElementById("products-list");
 
-    const formAddProduct = document.getElementById("formAddProduct");
-    const formData = new FormData(formAddProduct);
-    formData.set("product_id", id);
+/**
+ * Cria um elemento tbody
+ *
+ * var {HTMLTableRowElement} tableBody
+ */
+const tableBody = document.createElement("tbody");
 
-    const productData = Object.fromEntries(formData);
-    products.push(productData);
-    localStorage.setItem('products', JSON.stringify(products));
+/**
+ * Array com todos os produtos da loja para fazer um loop e exibir na tabela
+ *
+ * @var {Array} products
+ */
+const products = JSON.parse(localStorage.getItem("products")) || [];
 
-    for (let x = 0; x <= products.length - 1; x++) {
-        const produto = products[x];
-        const row = document.createElement('tr');
+function listProducts() {
+  for (let x = 0; x <= products.length - 1; x++) {
+    const produto = products[x];
+    const row = document.createElement("tr");
 
-        for (let i = 0; i < colName.length; i++) {
-            const td = document.createElement("td");
-            td.innerText = produto[colName[i]];
-            row.appendChild(td);
-        }
-
-        tableBody.appendChild(row);
+    for (let i = 0; i < colName.length; i++) {
+      const td = document.createElement("td");
+      td.innerText = produto[colName[i]];
+      row.appendChild(td);
     }
-    id++;
+
+    const tdActions = document.createElement('td')
+    tdActions.className = 'd-flex justify-content-end gap-3'
+
+    const seeButton = document.createElement('button');
+    seeButton.className = 'btn btn-info'
+    seeButton.innerText = 'Ver'
+
+    const editButton = document.createElement('button');
+    editButton.className = 'btn btn-primary'
+    editButton.innerText = 'Editar'
+
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'btn btn-danger'
+    deleteButton.innerText = 'Deletar'
+
+    tdActions.appendChild(seeButton)
+    tdActions.appendChild(editButton)
+    tdActions.appendChild(deleteButton)
+
+    row.appendChild(tdActions)
+
+    tableBody.appendChild(row);
+  }
 }
+
+/**
+ * Adiciona produto
+ */
+function addProduct() {
+  /** Limpa do body */
+  tableBody.innerHTML = "";
+
+  /** Pega o formulário e seta como FormData */
+  const formAddProduct = document.getElementById("formAddProduct");
+  const formData = new FormData(formAddProduct);
+  formData.set("product_id", id);
+
+  /** Extrai o objeto do formulário - Chave: Valor */
+  const productData = Object.fromEntries(formData);
+
+  /** Adiciona ao array de produtos */
+  products.push(productData);
+  localStorage.setItem("products", JSON.stringify(products));
+
+  listProducts();
+  id++
+}
+
 productsListTable.appendChild(tableBody);
+
+listProducts();
